@@ -14,37 +14,43 @@
     }
     
     .container {
-      max-width: 900px;
+      max-width: 800px;
       margin: 0 auto;
       padding: 20px;
+      border: 1px solid #333;
+    }
+    
+    .header-link {
+      text-decoration: none;
+      cursor: pointer;
     }
     
     header {
       text-align: center;
       border: 1px solid #333;
-      padding: 20px;
+      padding: 30px 0;
       margin-bottom: 20px;
     }
     
     h1 {
       color: #ffd700; /* Golden yellow */
-      font-size: 3rem;
+      font-size: 4rem;
       margin: 0;
     }
     
     nav {
       display: flex;
-      justify-content: space-around;
+      justify-content: flex-start;
       background-color: #222;
-      padding: 15px;
+      padding: 15px 40px;
       margin-bottom: 40px;
     }
     
     nav a {
       color: #ffd700;
       text-decoration: none;
-      font-size: 1.5rem;
-      padding: 10px 15px;
+      font-size: 1.8rem;
+      padding: 10px 30px 10px 0;
       cursor: pointer;
     }
     
@@ -53,22 +59,19 @@
       font-weight: bold;
     }
     
-    nav a:hover {
-      text-decoration: underline;
-    }
-    
+    /* Content containers */
     .content {
       background-color: #222;
-      padding: 30px;
-      border-radius: 10px;
+      padding: 40px;
+      border-radius: 0;
       margin-bottom: 40px;
     }
     
-    .page {
+    .page-content {
       display: none;
     }
     
-    .page.active {
+    .page-content.active {
       display: block;
     }
     
@@ -77,6 +80,7 @@
       line-height: 1.6;
     }
     
+    /* Listings styling */
     .listing {
       margin-bottom: 30px;
     }
@@ -103,278 +107,545 @@
       text-decoration: underline;
     }
     
+    /* Help link styling */
     .help-link {
       text-align: center;
-      margin: 40px 0;
+      margin: 80px 0 40px 0;
     }
     
     .help-link a {
       color: #ffd700;
-      font-size: 2.5rem;
+      font-size: 3.5rem;
       text-decoration: none;
     }
     
     .help-link a:hover {
       text-decoration: underline;
     }
+    
+    /* Post page styling */
+    .post-content {
+      background-color: #1a1a1a;
+      padding: 40px;
+      display: none;
+    }
+    
+    .post-content h2 {
+      color: #ffd700;
+      font-size: 2.5rem;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+    
+    .post-content .post-date {
+      font-style: italic;
+      color: #999;
+      margin-bottom: 30px;
+      font-size: 1.2rem;
+    }
+    
+    .post-content p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    
+    .post-content .post-footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #444;
+      font-size: 1.1rem;
+      color: #999;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <header>
+    <header onclick="goToHome()">
       <h1>Ridgewood FUBUnet</h1>
     </header>
     
     <nav>
-      <a onclick="showPage('home')" id="nav-home" class="active">Home</a>
       <a onclick="showPage('community')" id="nav-community">Community</a>
       <a onclick="showPage('housing')" id="nav-housing">Housing</a>
       <a onclick="showPage('jobs')" id="nav-jobs">Jobs</a>
       <a onclick="showPage('sale')" id="nav-sale">Sale</a>
     </nav>
     
-    <!-- Home Page -->
-    <div id="home-page" class="content page active">
+    <!-- Home Page Content -->
+    <div id="home-page" class="content page-content active">
       <div class="home-content">
         <p>About: Ridgewood FUBUnet is similar to Craigslist, Facebook, and other online listings but is managed by the local community.</p>
         <p>This location is managed by: Tiny Arts Supply</p>
       </div>
     </div>
     
-    <!-- Community Page -->
-    <div id="community-page" class="content page">
+    <!-- Community Page Content -->
+    <div id="community-page" class="content page-content">
       <div class="listing">
         <div class="date">jan 5:</div>
-        <div class="entry"><a href="#">Jefferson btwn Wyckoff/Irving block party ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('block-party'); return false;">Jefferson btwn Wyckoff/Irving block party ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 12:</div>
-        <div class="entry"><a href="#">Central Library voter registration drive ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('voter-registration'); return false;">Central Library voter registration drive ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 18:</div>
-        <div class="entry"><a href="#">Madison Park winter coat giveaway ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('coat-giveaway'); return false;">Madison Park winter coat giveaway ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 25:</div>
-        <div class="entry"><a href="#">Community garden planning meeting ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('garden-planning'); return false;">Community garden planning meeting ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 3:</div>
-        <div class="entry"><a href="#">Brooklyn Ave street cleanup ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('street-cleanup'); return false;">Brooklyn Ave street cleanup ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 10:</div>
-        <div class="entry"><a href="#">Food bank distribution at St. Mary's ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('food-bank'); return false;">Food bank distribution at St. Mary's ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 17:</div>
-        <div class="entry"><a href="#">City Council open forum on transit ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('transit-forum'); return false;">City Council open forum on transit ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 24:</div>
-        <div class="entry"><a href="#">Neighborhood safety workshop ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('safety-workshop'); return false;">Neighborhood safety workshop ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">mar 2:</div>
-        <div class="entry"><a href="#">Bike repair clinic at Maple Square ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('bike-repair'); return false;">Bike repair clinic at Maple Square ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">mar 9:</div>
-        <div class="entry"><a href="#">Local history walking tour: Ridgewood landmarks ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('walking-tour'); return false;">Local history walking tour: Ridgewood landmarks ...</a></div>
       </div>
     </div>
     
-    <!-- Housing Page -->
-    <div id="housing-page" class="content page">
+    <!-- Housing Page Content -->
+    <div id="housing-page" class="content page-content">
       <div class="listing">
         <div class="date">jan 3:</div>
-        <div class="entry"><a href="#">1BR apartment near Myrtle-Wyckoff, $1800/mo ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('apartment-myrtle'); return false;">1BR apartment near Myrtle-Wyckoff, $1800/mo ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 7:</div>
-        <div class="entry"><a href="#">Looking for roommate in 2BR on Forest Ave ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('roommate-forest'); return false;">Looking for roommate in 2BR on Forest Ave ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 15:</div>
-        <div class="entry"><a href="#">Studio for sublet, Feb-April, $1500/mo util included ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('studio-sublet'); return false;">Studio for sublet, Feb-April, $1500/mo util included ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 22:</div>
-        <div class="entry"><a href="#">Couple seeking 2BR under $2200, pet friendly ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('couple-2br'); return false;">Couple seeking 2BR under $2200, pet friendly ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 1:</div>
-        <div class="entry"><a href="#">Room available in 3BR artist house, $850 ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('artist-house'); return false;">Room available in 3BR artist house, $850 ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 8:</div>
-        <div class="entry"><a href="#">3BR duplex with backyard, $3000/mo ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('duplex-backyard'); return false;">3BR duplex with backyard, $3000/mo ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 14:</div>
-        <div class="entry"><a href="#">Live/work space in converted warehouse ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('livework-space'); return false;">Live/work space in converted warehouse ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 20:</div>
-        <div class="entry"><a href="#">Seeking apartment swap: my 1BR for your 2BR ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('apartment-swap'); return false;">Seeking apartment swap: my 1BR for your 2BR ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 27:</div>
-        <div class="entry"><a href="#">1BR in prime location, $1950/mo, avail March ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('1br-prime'); return false;">1BR in prime location, $1950/mo, avail March ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">mar 5:</div>
-        <div class="entry"><a href="#">Room in queer-friendly shared house, $800 ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('queer-friendly'); return false;">Room in queer-friendly shared house, $800 ...</a></div>
       </div>
     </div>
     
-    <!-- Jobs Page -->
-    <div id="jobs-page" class="content page">
+    <!-- Jobs Page Content -->
+    <div id="jobs-page" class="content page-content">
       <div class="listing">
         <div class="date">jan 4:</div>
-        <div class="entry"><a href="#">Barista wanted at Cypress Ave coffee shop ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('barista-wanted'); return false;">Barista wanted at Cypress Ave coffee shop ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 9:</div>
-        <div class="entry"><a href="#">Graphic designer available for freelance work ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('graphic-designer'); return false;">Graphic designer available for freelance work ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 16:</div>
-        <div class="entry"><a href="#">Part-time help needed at Tiny Arts Supply ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('tiny-arts-job'); return false;">Part-time help needed at Tiny Arts Supply ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 23:</div>
-        <div class="entry"><a href="#">Dog walker needed M-F afternoons ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('dog-walker'); return false;">Dog walker needed M-F afternoons ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 30:</div>
-        <div class="entry"><a href="#">Experienced carpenter seeks renovation work ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('carpenter'); return false;">Experienced carpenter seeks renovation work ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 5:</div>
-        <div class="entry"><a href="#">After-school childcare, 3-6pm weekdays ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('childcare'); return false;">After-school childcare, 3-6pm weekdays ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 12:</div>
-        <div class="entry"><a href="#">Web developer for local business website ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('web-developer'); return false;">Web developer for local business website ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 19:</div>
-        <div class="entry"><a href="#">Kitchen staff needed at new vegan restaurant ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('kitchen-staff'); return false;">Kitchen staff needed at new vegan restaurant ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 26:</div>
-        <div class="entry"><a href="#">Photographer available for events & portraits ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('photographer'); return false;">Photographer available for events & portraits ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">mar 4:</div>
-        <div class="entry"><a href="#">Weekend retail position at vintage shop ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('retail-position'); return false;">Weekend retail position at vintage shop ...</a></div>
       </div>
     </div>
     
-    <!-- Sale Page -->
-    <div id="sale-page" class="content page">
+    <!-- Sale Page Content -->
+    <div id="sale-page" class="content page-content">
       <div class="listing">
         <div class="date">jan 2:</div>
-        <div class="entry"><a href="#">Vintage mid-century dresser, $250 ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('vintage-dresser'); return false;">Vintage mid-century dresser, $250 ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 8:</div>
-        <div class="entry"><a href="#">Trek road bike, great condition, $400 ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('trek-bike'); return false;">Trek road bike, great condition, $400 ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 14:</div>
-        <div class="entry"><a href="#">Macbook Pro 2019, 16", $800 OBO ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('macbook-pro'); return false;">Macbook Pro 2019, 16", $800 OBO ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 21:</div>
-        <div class="entry"><a href="#">Handmade ceramic planters, various sizes ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('ceramic-planters'); return false;">Handmade ceramic planters, various sizes ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">jan 29:</div>
-        <div class="entry"><a href="#">Studio moving sale - art supplies, furniture ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('studio-sale'); return false;">Studio moving sale - art supplies, furniture ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 4:</div>
-        <div class="entry"><a href="#">Guitar amp, Fender Hot Rod Deluxe, $450 ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('guitar-amp'); return false;">Guitar amp, Fender Hot Rod Deluxe, $450 ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 11:</div>
-        <div class="entry"><a href="#">60s Singer sewing machine, working condition ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('sewing-machine'); return false;">60s Singer sewing machine, working condition ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 18:</div>
-        <div class="entry"><a href="#">Houseplants for sale, various types ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('houseplants'); return false;">Houseplants for sale, various types ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">feb 25:</div>
-        <div class="entry"><a href="#">Leather couch, 7ft, minimal wear, $600 ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('leather-couch'); return false;">Leather couch, 7ft, minimal wear, $600 ...</a></div>
       </div>
       
       <div class="listing">
         <div class="date">mar 3:</div>
-        <div class="entry"><a href="#">Record collection, over 200 LPs, jazz/rock ...</a></div>
+        <div class="entry"><a href="#" onclick="showPost('record-collection'); return false;">Record collection, over 200 LPs, jazz/rock ...</a></div>
       </div>
     </div>
     
     <div class="help-link">
-      <a href="#">About & Help Page</a>
+      <a href="#" onclick="showPage('help'); return false;">About & Help Page</a>
+    </div>
+  </div>
+  
+  <!-- Post Contents -->
+  <div id="post-block-party" class="post-content">
+    <h2>Jefferson btwn Wyckoff/Irving block party</h2>
+    <div class="post-date">January 5, 2025</div>
+    
+    <p>Join us for our annual winter block party on Jefferson Avenue between Wyckoff and Irving! This community celebration brings together neighbors for food, music, and winter activities.</p>
+    
+    <p>We'll have several local food vendors offering special discounts, a DJ playing throughout the day, and activities for children including a snowman-building contest (weather permitting). Local businesses along the block will be offering special promotions and giveaways.</p>
+    
+    <p>The street will be closed to traffic from 12pm to 6pm. In case of severe weather, the event will be postponed to the following weekend. Bring your friends, family, and neighbors!</p>
+    
+    <div class="post-footer">
+      Contact: rna@ridgewoodcommunity.org • (718) 555-1234
+    </div>
+  </div>
+  
+  <div id="post-voter-registration" class="post-content">
+    <h2>Central Library voter registration drive</h2>
+    <div class="post-date">January 12, 2025</div>
+    
+    <p>The Ridgewood Central Library is hosting a voter registration drive to help community members register to vote in upcoming elections. Volunteers will be available to assist with registration forms and answer questions about voting eligibility, polling locations, and important dates.</p>
+    
+    <p>The drive will run from 10am to 4pm. Please bring identification if you plan to register. Materials will be available in English, Spanish, and Polish.</p>
+    
+    <p>This is a non-partisan event focused on increasing civic participation in our community. Light refreshments will be provided.</p>
+    
+    <div class="post-footer">
+      Location: Ridgewood Central Library, 123 Main St • Contact: civics@ridgewoodcoalition.org
+    </div>
+  </div>
+  
+  <div id="post-coat-giveaway" class="post-content">
+    <h2>Madison Park winter coat giveaway</h2>
+    <div class="post-date">January 18, 2025</div>
+    
+    <p>Ridgewood Mutual Aid is organizing our annual winter coat giveaway at Madison Park. We have collected over 200 coats in various sizes for adults and children that will be distributed to community members in need.</p>
+    
+    <p>The giveaway will take place from 11am to 3pm, or until supplies last. No documentation or proof of need is required - this event operates on a solidarity model rather than a charity model.</p>
+    
+    <p>If you have coats to donate, you can bring them to the event or drop them off at Tiny Arts Supply during business hours before January 16th.</p>
+    
+    <div class="post-footer">
+      Location: Madison Park gazebo • Contact: winter@ridgewoodmutualaid.org
+    </div>
+  </div>
+  
+  <div id="post-garden-planning" class="post-content">
+    <h2>Community garden planning meeting</h2>
+    <div class="post-date">January 25, 2025</div>
+    
+    <p>Join us for the first planning meeting of the year for the Ridgewood Community Garden. We'll be discussing plans for the upcoming growing season, assigning plots, and organizing volunteer schedules.</p>
+    
+    <p>This meeting is open to both current garden members and those interested in joining. We'll cover the basics of community garden participation, membership fees, and responsibilities. New members are welcome as we have several plots opening up this year.</p>
+    
+    <p>The meeting will be held indoors at the community center at 7pm. Light refreshments will be provided, and children are welcome.</p>
+    
+    <div class="post-footer">
+      Location: Ridgewood Community Center, Room 3B • Contact: grow@greenridgewood.org
+    </div>
+  </div>
+  
+  <div id="post-street-cleanup" class="post-content">
+    <h2>Brooklyn Ave street cleanup</h2>
+    <div class="post-date">February 3, 2025</div>
+    
+    <p>Volunteers needed for our monthly street cleanup, focusing on Brooklyn Avenue from Madison to Jefferson. We'll be picking up litter, sweeping sidewalks, and removing graffiti where possible.</p>
+    
+    <p>Cleanup supplies including gloves, bags, and tools will be provided. Please wear weather-appropriate clothing and sturdy shoes. The cleanup will run from 10am to 1pm, but volunteers are welcome to participate for any amount of time within that window.</p>
+    
+    <p>This is a great opportunity to meet neighbors and make a visible improvement to our community. Students can earn community service hours.</p>
+    
+    <div class="post-footer">
+      Meeting point: Corner of Brooklyn Ave & Madison St • Contact: cleanup@cleanridgewood.org
     </div>
   </div>
 
   <script>
+    // Set default view on page load
+    window.onload = function() {
+      // Check if there's a category in the hash (for post->category navigation)
+      const hash = window.location.hash.substring(1);
+      if (hash && ['community', 'housing', 'jobs', 'sale'].includes(hash)) {
+        // Show that category
+        hideAllPages();
+        document.getElementById(hash + '-page').classList.add('active');
+        
+        // Highlight the nav
+        clearNavHighlighting();
+        document.getElementById('nav-' + hash).classList.add('active');
+      } else {
+        // Default to home
+        document.getElementById('home-page').classList.add('active');
+      }
+    }
+    
+    // Go to home page
+    function goToHome() {
+      try {
+        // Check if we're viewing a post
+        const container = document.querySelector('.container');
+        const contentElements = container.querySelectorAll('.content:not(.page-content)');
+        if (contentElements && contentElements.length > 0) {
+          // We're in a post view, so reload the page without hash
+          window.location.href = window.location.pathname;
+          return;
+        }
+        
+        // Normal navigation
+        hideAllPosts();
+        hideAllPages();
+        document.getElementById('home-page').classList.add('active');
+        clearNavHighlighting();
+        window.scrollTo(0, 0);
+      } catch(e) {
+        console.error('Error going to home:', e);
+        // If any error, just reload the page
+        window.location.href = window.location.pathname;
+      }
+    }
+    
+    // Show a specific category page
     function showPage(pageName) {
-      // Hide all pages
-      const pages = document.querySelectorAll('.page');
-      pages.forEach(page => {
-        page.classList.remove('active');
-      });
-      
-      // Show the selected page
-      document.getElementById(pageName + '-page').classList.add('active');
-      
-      // Update navigation highlighting
-      const navLinks = document.querySelectorAll('nav a');
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-      });
-      document.getElementById('nav-' + pageName).classList.add('active');
+      try {
+        // Check if we're viewing a post
+        const container = document.querySelector('.container');
+        const contentElements = container.querySelectorAll('.content:not(.page-content)');
+        if (contentElements && contentElements.length > 0) {
+          // We're in a post view, so use hash to navigate after reload
+          window.location.href = window.location.pathname + '#' + pageName;
+          window.location.reload();
+          return;
+        }
+        
+        // Normal navigation
+        hideAllPosts();
+        hideAllPages();
+        
+        // Show selected page
+        const pageElement = document.getElementById(pageName + '-page');
+        if (pageElement) {
+          pageElement.classList.add('active');
+        }
+        
+        // Update nav highlighting
+        clearNavHighlighting();
+        if (pageName !== 'help') {
+          const navElement = document.getElementById('nav-' + pageName);
+          if (navElement) {
+            navElement.classList.add('active');
+          }
+        }
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+      } catch(e) {
+        console.error('Error showing page:', e);
+        // If any error, reload
+        window.location.reload();
+      }
+    }
+    
+    // Show a specific post
+    function showPost(postId) {
+      try {
+        // Hide all pages including help link
+        hideAllPages();
+        const helpLink = document.querySelector('.help-link');
+        if (helpLink) {
+          helpLink.style.display = 'none';
+        }
+        
+        // Clear the content area
+        const contentArea = document.createElement('div');
+        contentArea.className = 'content';
+        contentArea.innerHTML = document.getElementById('post-' + postId).innerHTML;
+        
+        // Replace the current content with the post content
+        const container = document.querySelector('.container');
+        const oldContents = Array.from(container.children);
+        
+        // Keep header and nav, remove everything else
+        for (let i = 0; i < oldContents.length; i++) {
+          if (i > 1) { // After header and nav
+            container.removeChild(oldContents[i]);
+          }
+        }
+        
+        // Add the post content
+        container.appendChild(contentArea);
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+      } catch(e) {
+        console.error('Error showing post:', e);
+      }
+    }
+    
+    // Helper function to hide all pages
+    function hideAllPages() {
+      try {
+        const pages = document.querySelectorAll('.page-content');
+        if (pages) {
+          pages.forEach(page => {
+            page.classList.remove('active');
+          });
+        }
+      } catch(e) {
+        console.error('Error hiding pages:', e);
+      }
+    }
+    
+    // Helper function to hide all posts
+    function hideAllPosts() {
+      try {
+        // Show help link again in case it was hidden
+        const helpLink = document.querySelector('.help-link');
+        if (helpLink) {
+          helpLink.style.display = 'block';
+        }
+        
+        // Remove any post content that might have been added
+        const container = document.querySelector('.container');
+        if (container) {
+          const contentElements = container.querySelectorAll('.content:not(.page-content)');
+          if (contentElements) {
+            contentElements.forEach(el => {
+              if (el.parentNode === container) {
+                container.removeChild(el);
+              }
+            });
+          }
+        }
+      } catch(e) {
+        console.error('Error hiding posts:', e);
+      }
+    }
+    
+    // Helper function to clear nav highlighting
+    function clearNavHighlighting() {
+      try {
+        const navLinks = document.querySelectorAll('nav a');
+        if (navLinks) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+          });
+        }
+      } catch(e) {
+        console.error('Error clearing nav highlighting:', e);
+      }
     }
   </script>
 </body>
