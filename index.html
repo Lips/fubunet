@@ -3,43 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Events</title>
+    <title>FUBUnet Slides</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+    <style>
+        /* Ensure slides align to the top */
+        .slides { transform: none !important; top: 0 !important; margin: 0 !important; padding: 0 !important; }
+        .reveal { top: 0 !important; margin: 0 !important; padding: 0 !important; }
+        .present { top: 0 !important; margin: -1em -1em !important; }
+
+        /* Table styles */
+        table { width: 100%; border-collapse: collapse !important; border-spacing: 0 !important; table-layout: fixed !important; }
+        td, th { width: 10%; text-align: center; white-space: nowrap; overflow: visible; word-break: keep-all; border: none !important; padding: 0 !important; margin: 0 !important; empty-cells: show !important; }
+        th { display: none; } /* Hide table headers */
+    </style>
 </head>
 <body>
     <div class="reveal">
         <div class="slides">
-            <section>
-                <h1>Community Events</h1>
-                <p>Jump to:</p>
-                <ul>
-                    <li><a href="#/jefferson">Jefferson Block Party</a></li>
-                    <li><a href="#/voter-drive">Voter Registration</a></li>
-                    <li><a href="#/coat-drive">Coat Giveaway</a></li>
-                </ul>
+            <!-- Slide 1: Main Menu -->
+            <section id="home">
+                <h2>Ridgewood FUBUnet</h2>
+                <table>
+                    <tr><td colspan="11">||||||<a href="#/fubu">FUBU</a>||||||</td></tr>
+                    <tr>
+                        <td><a href="#/community">Community</a></td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="#/housing">Housing</a></td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="#/jobs">Jobs</a></td>
+                        <td></td>
+                        <td></td>
+                        <td><a href="#/sale">Sale</a></td>
+                    </tr>
+                </table>
+                <p style="font-size: 1em;">About: Ridgewood FUBUnet is similar to Craigslist, Facebook, and other online listings but is managed by the local community.</p>
+                <p style="font-size: 1em;">This location is managed by: Tiny Arts Supply</p>
+                <a href="#/help">About & Help Page</a>
             </section>
-            <section id="jefferson">
+
+            <!-- Slide 2: Community -->
+            <section id="community">
+                <h2>Community Events</h2>
+                <table>
+                    <tr><td colspan="11">||||||<a href="#/fubu">FUBU</a>||||||</td></tr>
+                </table>
+                <p style="font-size: 1em;">Upcoming Events</p>
+                <table>
+                    <tr>
+                        <th>Date</th><th colspan="10">Event</th>
+                    </tr>
+                    <tr><td>Jan 5:</td><td colspan="10"><a href="#/event-10">Jefferson btwn Wyckoff/Irving block party</a></td></tr>
+                    <tr><td>Jan 12:</td><td colspan="10"><a href="#/event-11">Central Library voter registration drive</a></td></tr>
+                    <tr><td>Jan 18:</td><td colspan="10"><a href="#/event-12">Madison Park winter coat giveaway</a></td></tr>
+                    <tr><td>Jan 25:</td><td colspan="10"><a href="#/event-13">Community garden planning meeting</a></td></tr>
+                    <tr><td>Feb 3:</td><td colspan="10"><a href="#/event-14">Brooklyn Ave street cleanup</a></td></tr>
+                    <tr><td>Feb 10:</td><td colspan="10"><a href="#/event-15">Food bank distribution at St. Mary's</a></td></tr>
+                    <tr><td>Feb 17:</td><td colspan="10"><a href="#/event-16">City Council open forum on transit</a></td></tr>
+                    <tr><td>Feb 24:</td><td colspan="10"><a href="#/event-17">Neighborhood safety workshop</a></td></tr>
+                    <tr><td>Mar 2:</td><td colspan="10"><a href="#/event-18">Bike repair clinic at Maple Square</a></td></tr>
+                </table>
+                <a href="#/help">About & Help Page</a>
+            </section>
+
+            <!-- Slide 3: Example Event -->
+            <section id="event-10">
                 <h2>Jefferson Block Party</h2>
                 <p>Block party on Jefferson between Wyckoff/Irving.</p>
-                <p><a href="#/">⬅ Back</a> | <a href="#/voter-drive">➡ Next</a></p>
+                <p><a href="#/community">⬅ Back to Community Events</a></p>
             </section>
-            <section id="voter-drive">
-                <h2>Voter Registration Drive</h2>
-                <p>Register to vote at the Central Library.</p>
-                <p><a href="#/jefferson">⬅ Back</a> | <a href="#/coat-drive">➡ Next</a></p>
-            </section>
-            <section id="coat-drive">
-                <h2>Madison Park Coat Giveaway</h2>
-                <p>Free winter coats for those in need.</p>
-                <p><a href="#/voter-drive">⬅ Back</a></p>
+
+            <!-- Slide 4: Help Page -->
+            <section id="help">
+                <h2>About & Help Page</h2>
+                <p>This is the help page.</p>
+                <p><a href="#/home">⬅ Back to Home</a></p>
             </section>
         </div>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
     <script>
-        Reveal.initialize();
+        Reveal.initialize({
+            transition: 'slide',
+            hash: true
+        });
     </script>
 </body>
 </html>
