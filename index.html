@@ -4,98 +4,143 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ridgewood FUBUnet</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
     <style>
-        /* Ensure slides align properly */
-        .reveal .slides {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            height: 100vh;
-            padding-top: 1em;
-        }
-        .reveal section {
+        body {
+            font-family: Arial, sans-serif;
             text-align: center;
-            max-width: 90%;
+            background: #121212;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
         }
-        
-        /* Persistent header */
-        .persistent-header {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
+        .header {
             font-size: 2em;
             font-weight: bold;
-            padding: 10px 0;
+            padding: 10px;
+            background: #1e1e1e;
+            color: #ffcc00;
             width: 100%;
-            text-align: center;
-            background: black;
-            color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
-        
-        /* Nav menu */
         .nav-menu {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 3em;
+            margin-top: 60px;
+            padding: 10px;
+            background: #1e1e1e;
         }
         .nav-menu a {
             text-decoration: none;
             font-size: 1.2em;
-            color: lightblue;
+            color: #ffcc00;
             padding: 5px 15px;
+            transition: color 0.3s ease;
         }
-        
-        /* Center text content */
-        .center-text {
+        .nav-menu a:hover {
+            color: #ff9900;
+        }
+        .nav-menu a:visited {
+            color: #ffaa33;
+        }
+        .content {
             max-width: 80%;
-            margin: 20px auto;
-            text-align: center;
+            margin: 100px auto 20px;
+            padding: 20px;
+            background: #1e1e1e;
+            border-radius: 10px;
+        }
+        .content a {
+            color: #ffcc00;
+        }
+        .content a:hover {
+            color: #ff9900;
+        }
+        .hidden {
+            display: none;
+        }
+        .event-header {
+            margin-top: 40px;
+            font-size: 1.5em;
+        }
+        .event-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .about-link {
+            display: block;
+            margin-top: 50px;
+            font-size: 2em;
+            color: #ffcc00;
         }
     </style>
 </head>
 <body>
-    <div class="reveal">
-        <div class="slides">
-            <div class="persistent-header">Ridgewood FUBUnet</div>
-            
-            <section id="home">
-                <div class="nav-menu">
-                    <a href="#/community">Community</a>
-                    <a href="#/housing">Housing</a>
-                    <a href="#/jobs">Jobs</a>
-                    <a href="#/sale">Sale</a>
-                </div>
-                <p class="center-text">About: Ridgewood FUBUnet is similar to Craigslist, Facebook, and other online listings but is managed by the local community.</p>
-                <p class="center-text">This location is managed by: Tiny Arts Supply</p>
-                <a href="#/help">About & Help Page</a>
-            </section>
-
-            <section id="community">
-                <h2>Community Events</h2>
-                <p class="center-text">Upcoming Events</p>
-                <a href="#/help">About & Help Page</a>
-            </section>
-
-            <section id="help">
-                <h2>About & Help Page</h2>
-                <p class="center-text">This is the help page.</p>
-                <p><a href="#/home">⬅ Back to Home</a></p>
-            </section>
-        </div>
+    <div class="header">Ridgewood FUBUnet</div>
+    <div class="nav-menu">
+        <a href="#" onclick="showPage('community')">Community</a>
+        <a href="#" onclick="showPage('housing')">Housing</a>
+        <a href="#" onclick="showPage('jobs')">Jobs</a>
+        <a href="#" onclick="showPage('sale')">Sale</a>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <div id="home" class="content">
+        <p>About: Ridgewood FUBUnet is similar to Craigslist, Facebook, and other online listings but is managed by the local community.</p>
+        <p>This location is managed by: Tiny Arts Supply</p>
+        <a href="#" onclick="showPage('help')" class="about-link">About & Help Page</a>
+    </div>
+
+    <div id="community" class="content hidden">
+        <h2 class="event-header">Community Events</h2>
+        <p>Upcoming Events</p>
+        <ul class="event-list">
+            <li><a href="#" onclick="showPage('event1')">Jan 5: Jefferson btwn Wyckoff/Irving block party</a></li>
+            <li><a href="#" onclick="showPage('event2')">Jan 12: Central Library voter registration drive</a></li>
+        </ul>
+    </div>
+
+    <div id="housing" class="content hidden">
+        <h2 class="event-header">Housing Listings</h2>
+        <p>Available & Wanted Listings</p>
+        <ul class="event-list">
+            <li><a href="#" onclick="showPage('housing1')">Jan 8: 2BR Apartment for Rent - Ridgewood</a></li>
+            <li><a href="#" onclick="showPage('housing2')">Jan 15: Looking for Roommate near Wyckoff</a></li>
+        </ul>
+    </div>
+
+    <div id="jobs" class="content hidden">
+        <h2 class="event-header">Job Listings</h2>
+        <p>Gigs & Full-Time Jobs</p>
+        <ul class="event-list">
+            <li><a href="#" onclick="showPage('jobs1')">Jan 9: Part-Time Barista Needed</a></li>
+            <li><a href="#" onclick="showPage('jobs2')">Jan 18: Babysitter Wanted - Flexible Hours</a></li>
+        </ul>
+    </div>
+
+    <div id="sale" class="content hidden">
+        <h2 class="event-header">Items for Sale</h2>
+        <p>Community Marketplace</p>
+        <ul class="event-list">
+            <li><a href="#" onclick="showPage('sale1')">Jan 7: Used Bicycle - $100</a></li>
+            <li><a href="#" onclick="showPage('sale2')">Jan 14: Couch for Sale - Best Offer</a></li>
+        </ul>
+    </div>
+
+    <div id="help" class="content hidden">
+        <h2 class="about-link">About & Help Page</h2>
+        <p>Help and about info here.</p>
+        <a href="#" onclick="showPage('home')" class="about-link">⬅ Back to Home</a>
+    </div>
+
     <script>
-        Reveal.initialize({
-            transition: 'slide',
-            hash: true
-        });
+        function showPage(id) {
+            document.querySelectorAll('.content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+        }
     </script>
 </body>
 </html>
