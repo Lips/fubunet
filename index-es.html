@@ -1,21 +1,3 @@
-<!-- Help Page -->
-    <div id="help-page" class="content page-content">
-      <h2 style="color: #ffd700; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px;">Acerca de & Información de Ayuda</h2>
-      
-      <p>Esta página contiene información detallada sobre la red y materiales de ayuda que puedan ser necesarios.</p>
-      
-      <h3 style="color: #ffd700; font-size: 1.4rem; margin-top: 30px; margin-bottom: 15px;">Acerca de FUBUnet</h3>
-      <p>Ridgewood FUBUnet es un servicio de listados administrado por la comunidad. No recopilamos datos, no mostramos anuncios ni priorizamos listados según el pago. Todas las publicaciones se tratan por igual.</p>
-      
-      <h3 style="color: #ffd700; font-size: 1.4rem; margin-top: 30px; margin-bottom: 15px;">Cómo Usar FUBUnet</h3>
-      <p>Explora los listados haciendo clic en las pestañas de categorías en la parte superior de la página. Haz clic en cualquier listado para ver sus detalles. Para volver a los listados, simplemente haz clic nuevamente en una pestaña de categoría.</p>
-      
-      <h3 style="color: #ffd700; font-size: 1.4rem; margin-top: 30px; margin-bottom: 15px;">Normas de la Comunidad</h3>
-      <p>• Sé respetuoso y honesto en todas las publicaciones</p>
-      <p>• Las ofertas de trabajo deben incluir información sobre el pago</p>
-    </div>
-
-<!-- Full HTML Document with scripts, styles, and content -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -70,6 +52,36 @@
       text-decoration: underline;
       font-weight: bold;
     }
+    .content {
+      background-color: #222;
+      padding: 20px 15px;
+      border-radius: 0;
+      margin-bottom: 40px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .page-content {
+      display: none;
+    }
+    .page-content.active {
+      display: block;
+    }
+    .home-content {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+    .help-link {
+      text-align: center;
+      margin: 80px 0 40px 0;
+    }
+    .help-link a {
+      color: #ffd700;
+      font-size: 1.4rem;
+      text-decoration: none;
+    }
+    .help-link a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -77,27 +89,24 @@
     <header onclick="goToHome()">
       <h1>Ridgewood FUBUnet</h1>
     </header>
+    
     <nav>
       <a onclick="showPage('community')" id="nav-community">Comunidad</a>
       <a onclick="showPage('housing')" id="nav-housing">Vivienda</a>
-      <a onclick="showPage('jobs')" id="nav-jobs">Trabajos</a>
+      <a onclick="showPage('jobs')" id="nav-jobs">Empleos</a>
       <a onclick="showPage('sale')" id="nav-sale">Ventas</a>
     </nav>
+    
     <div id="home-page" class="content page-content active">
       <div class="home-content">
-        <p>Acerca de: Ridgewood FUBUnet es similar a Craigslist, Facebook y otros listados en línea, pero está gestionado por la comunidad local.</p>
-        <p>Este sitio está administrado por: Tiny Arts Supply</p>
+        <p>Sobre: Ridgewood FUBUnet es similar a Craigslist, Facebook y otras plataformas de anuncios en línea, pero es administrado por la comunidad local.</p>
+        <p>Este sitio es gestionado por: Tiny Arts Supply</p>
       </div>
     </div>
+    
+    <div class="help-link">
+      <a href="#" onclick="showPage('help'); return false;">Página de Ayuda & Información</a>
+    </div>
   </div>
-  <script>
-    function goToHome() {
-      window.location.href = window.location.pathname;
-    }
-    function showPage(pageName) {
-      document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
-      document.getElementById(pageName + '-page').classList.add('active');
-    }
-  </script>
 </body>
 </html>
